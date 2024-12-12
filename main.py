@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-
 # Create an interactive streamlit page to show my solutions to Rosalind questions.
 # Set up main landing page
 st.set_page_config(page_title="Rosalind Solutions", layout="wide")
