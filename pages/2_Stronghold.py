@@ -5,7 +5,7 @@ from utils.s_functions import *
 st.set_page_config(page_title="Stronghold Solutions", layout="wide")
 st.title("Stronghold Solutions")
 
-num_complete = 5
+num_complete = 10
 st.write(f"Completed Questions: **{str(num_complete)}**/105.")
 st.progress(round(num_complete/105,2), text="Progress:")
 
@@ -49,11 +49,24 @@ with tabs[0]:
         st.write(f"Max GC-content Name: {max_gc_name}")
         st.write(f"GC-content Percentage: {max_gc_content}")
 
-    st.write("Q6")
-    st.write("Q7")
-    st.write("Q8")
-    st.write("Q9")
-    st.write("Q10")
+    #Q6
+    with st.expander("See Q6 Solution"):
+        st.write(q6("data/stronghold/rosalind_hamm.txt"))
+    
+    with st.expander("See Q7 Solution"):
+        st.write(q7(18,22,25))
+    
+    with st.expander("See Q8 Solution"):
+        st.write(q8("data/stronghold/rosalind_prot.txt"))
+    
+    with st.expander("See Q9 Solution"):
+        st.write(q9("data/stronghold/rosalind_subs.txt"))
+
+    with st.expander("See Q10 Solution"):
+        df = q5("data/stronghold/rosalind_cons.txt")
+        st.write(df)
+        st.write(q10(df))
+
     st.write("Q11")
     st.write("Q12")
     st.write("Q13")
