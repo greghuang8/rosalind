@@ -1,4 +1,5 @@
 import pandas as pd
+import itertools as it
 
 #q1 function 
 def q1(s:str) -> list:
@@ -168,7 +169,46 @@ def q10(df:pd.DataFrame):
         consensus_dict["G"] += (str(g_count) + " ")
         consensus_dict["T"] += (str(t_count) + " ")
     return  consensus_string, consensus_dict
+
+#Fib w/ dead rabbits
+#https://saradoesbioinformatics.blogspot.com/2016/06/mortal-fibonacci-rabbits.html
+def q11(n:int, m:int):
+    rabbits_seq = [1,1]
+    months = 2
+    offset = m + 1
+    while months < n:
+        if months < m:
+            rabbits_seq.append(rabbits_seq[-2]+rabbits_seq[-1])
+        elif months == m:
+            rabbits_seq.append(rabbits_seq[-2]+rabbits_seq[-1]-1)
+        else: 
+            rabbits_seq.append(rabbits_seq[-2]+rabbits_seq[-1]-rabbits_seq[-offset])
+        months += 1
+    return rabbits_seq[-1]
+
+#Graph problem 
+# In this example, the overlap graph is O3, where the first 3 and the last 3 bp need to match
+# https://stackoverflow.com/questions/27878067/rosalind-overlap-graphs
+def q12(df:pd.DataFrame,k:int):
+    #convert input df to dict
+    dna_map = df.set_index('Name')['Sequence'].to_dict()
     
+    # set empty output list 
+    edges = []
+    #using itertools.combinations, get the pairs of names in the dna_map dictionary
+    name_pairs = it.combinations(dna_map, 2)
+    
+    #iterate through each pair of names, u = first name, v = second name in pair
+    # and then get the corresponding sequence
+    for u,v in name_pairs:
+        u_dna, v_dna = dna_map[u], dna_map[v] #get the sequences associated to name from dictionary
+        if u_dna[-k:] == v_dna[:k]:
+            edges.append((u,v))
+        if v_dna[-k:] == u_dna[:k]:
+            edges.append((v,u))
+    
+    return edges
+
 
 
 

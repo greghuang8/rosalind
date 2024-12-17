@@ -67,8 +67,25 @@ with tabs[0]:
         st.write(df)
         st.write(q10(df))
 
-    st.write("Q11")
-    st.write("Q12")
+    with st.expander("See Q11 Solution"):
+        st.write(q11(82,20))
+
+    with st.expander("See Q12 Solution"):
+        df = q5("data/stronghold/rosalind_grph.txt")
+        output = q12(df,3)
+        st.write("hello")
+        st.write(output)
+
+        # correct output already obtained, format to fit Rosalind answer
+        s = ' '.join(map(str,output))
+        s_clean = s.replace("(", "").replace(")", "").replace("'", "").replace(",", "")
+        # Step 2: Split the string into words
+        pairs = s_clean.split()
+
+        # Step 3: Print pairs without commas
+        for i in range(0, len(pairs), 2):
+            print(pairs[i], pairs[i+1])
+    
     st.write("Q13")
     st.write("Q14")
     st.write("Q15")
