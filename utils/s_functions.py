@@ -209,6 +209,5 @@ def q12(df:pd.DataFrame,k:int):
     
     return edges
 
-
-
-
+def q13(a,b,c):
+    return a*2+b*1.5+c

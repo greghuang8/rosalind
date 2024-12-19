@@ -86,6 +86,14 @@ with tabs[0]:
         for i in range(0, len(pairs), 2):
             print(pairs[i], pairs[i+1])
     
+    with st.expander("See Q13 Solution"):
+        # given: 18914 19552 17378 17497 18804 18236
+        # sum the first 3 since they have same expected value of 2. 
+        # ignore the last value since it has the expected value of 0
+        # 17497 has expected value of 1.5, and 18804 has expected value of 1.
+        # Multiply based on those expected values and sum them. 
+        st.write(q13(55844,17497,18804))
+    
     st.write("Q13")
     st.write("Q14")
     st.write("Q15")
